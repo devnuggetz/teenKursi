@@ -9,6 +9,11 @@ const Model=()=>{
   const gltf= useGLTFLoader('/armchairYellow.gltf', true)
   return <primitive object={gltf.scene} dispose={null} />
 }
+const Lights=()=>{
+  return(
+    <ambientLight intensity={0.3} />
+  )
+}
 const HtmlContent=()=>{
   return(
     <Section factor={1.5} offset={1}>
@@ -35,6 +40,7 @@ function App() {
       colorManagement
       camera={{position:[0,0,120], fov:70}}
       >
+        <Lights />
         <Suspense fallback={null}>
            <HtmlContent />
         </Suspense>
