@@ -1,5 +1,5 @@
-import React, { Suspense } from 'react'
-import { Canvas } from 'react-three-fiber';
+import React, { Suspense, useRef } from 'react'
+import { Canvas, useFrame } from 'react-three-fiber';
 import './App.scss';
 import Header from './components/header';
 import {Html, RoundedBox, useGLTFLoader} from 'drei'
@@ -20,10 +20,16 @@ const Lights=()=>{
   )
 }
 const HtmlContent=()=>{
+  const ref= useRef();
+  useFrame(()=>{
+    ref.current.rotation.y+=0.01;
+  })
   return( 
     <Section factor={1.5} offset={1}>
       <group position={[0,250,0]}>
-        <mesh position={[0,-35,0]}>
+        <mesh 
+        ref={ref}
+        position={[0,-35,0]}>
           <Model />
         </mesh>
       <Html
