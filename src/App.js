@@ -45,7 +45,7 @@ const HtmlContent=({children,domContent, modelPath, positionY, bgColor})=>{
       portal={domContent}
         fullscreen 
         >
-          <div ref={refItem}>
+          <div className='container' ref={refItem}>
             {children}
           </div>
 
@@ -75,27 +75,25 @@ function App() {
            domContent={domContent}
            modelPath='/armchairYellow.gltf'
            positionY={250}>
-          <div className='container'>
-            <h1 className='title'>Hello</h1>
-          </div>
+
+            <h1 className='title'>Yellow Kursi</h1>
+
            </HtmlContent>
            <HtmlContent 
            bgColor={'#571ec1'}
            domContent={domContent}
            modelPath='/armchairGreen.gltf'
            positionY={0}>
-          <div className='container'>
-            <h1 className='title'>Hello</h1>
-          </div>
+
+            <h1 className='title'>Green Kursi</h1>
+
            </HtmlContent>
            <HtmlContent 
            bgColor={'#636567'}
            domContent={domContent}
            modelPath='/armchairGray.gltf'
            positionY={-250}>
-          <div className='container'>
-            <h1 className='title'>Hello</h1>
-          </div>
+            <h1 className='title'>Gray Kursi</h1>
            </HtmlContent>
         </Suspense>
       </Canvas>
