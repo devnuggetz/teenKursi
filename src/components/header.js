@@ -4,23 +4,20 @@ export default function Header() {
   return (
     <header>
       <div className='header-inner'>
-        <div className='logo'>CHAIR.</div>
+        <div className='logo'>KURSI.</div>
         <nav>
           <ul>
             <li>
-              <a href='/'>discover</a>
+              <a href='/'>DEKHO</a>
             </li>
             <li>
-              <a href='/'>products</a>
+              <a href='/'>BECHO</a>
             </li>
             <li>
-              <a href='/'>solutions</a>
-            </li>
-            <li>
-              <a href='/'>reach</a>
+              <a href='/'>KHAREEDO</a>
             </li>
             <li className='btn'>
-              <a href='/'>order</a>
+              <a href='/'>ORDER</a>
             </li>
           </ul>
         </nav>
