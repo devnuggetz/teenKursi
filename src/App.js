@@ -5,8 +5,8 @@ import Header from './components/header';
 import {Html, RoundedBox, useGLTFLoader} from 'drei'
 import { Section } from './components/section';
 
-const Model=()=>{
-  const gltf= useGLTFLoader('/armchairYellow.gltf', true)
+const Model=({modelPath})=>{
+  const gltf= useGLTFLoader(modelPath, true)
   return <primitive object={gltf.scene} dispose={null} />
 }
 const Lights=()=>{
@@ -19,25 +19,23 @@ const Lights=()=>{
     </>
   )
 }
-const HtmlContent=()=>{
+const HtmlContent=({children, modelPath, positionY})=>{
   const ref= useRef();
   useFrame(()=>{
     ref.current.rotation.y+=0.01;
   })
   return( 
     <Section factor={1.5} offset={1}>
-      <group position={[0,250,0]}>
+      <group position={[0,positionY,0]}>
         <mesh 
         ref={ref}
         position={[0,-35,0]}>
-          <Model />
+          <Model modelPath={modelPath}/>
         </mesh>
       <Html
         fullscreen 
         >
-          <div className='container'>
-            <h1 className='title'>Hello</h1>
-          </div>
+          {children}
         </Html>
       </group>
     </Section>
@@ -53,7 +51,20 @@ function App() {
       >
         <Lights />
         <Suspense fallback={null}>
-           <HtmlContent />
+           <HtmlContent 
+           modelPath='/armchairYellow.gltf'
+           positionY={250}>
+          <div className='container'>
+            <h1 className='title'>Hello</h1>
+          </div>
+           </HtmlContent>
+           <HtmlContent 
+           modelPath='/armchairGreen.gltf'
+           positionY={0}>
+          <div className='container'>
+            <h1 className='title'>Hello</h1>
+          </div>
+           </HtmlContent>
         </Suspense>
       </Canvas>
     </>
