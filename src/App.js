@@ -11,11 +11,14 @@ const Model=()=>{
 }
 const Lights=()=>{
   return(
+    <>
     <ambientLight intensity={0.3} />
+    <directionalLight position={[10,10,5]} intensity={1}/>
+    </>
   )
 }
 const HtmlContent=()=>{
-  return(
+  return( 
     <Section factor={1.5} offset={1}>
       <group position={[0,250,0]}>
         <mesh position={[0,-35,0]}>
