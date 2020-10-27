@@ -1,8 +1,32 @@
-import React from 'react'
+import React, { Suspense } from 'react'
 import { Canvas } from 'react-three-fiber';
 import './App.scss';
 import Header from './components/header';
+import {Html, RoundedBox, useGLTFLoader} from 'drei'
+import { Section } from './components/section';
 
+const Model=()=>{
+  const gltf= useGLTFLoader('/armchairYellow.gltf', true)
+  return <primitive object={gltf.scene} dispose={null} />
+}
+const HtmlContent=()=>{
+  return(
+    <Section factor={1.5} offset={1}>
+      <group position={[0,250,0]}>
+        <mesh position={[0,-35,0]}>
+          <Model />
+        </mesh>
+      <Html
+        fullscreen 
+        >
+          <div className='container'>
+            <h1 className='title'>Hello</h1>
+          </div>
+        </Html>
+      </group>
+    </Section>
+  )
+}
 function App() {
   return (
     <>
@@ -11,7 +35,9 @@ function App() {
       colorManagement
       camera={{position:[0,0,120], fov:70}}
       >
-        
+        <Suspense fallback={null}>
+           <HtmlContent />
+        </Suspense>
       </Canvas>
     </>
   );
